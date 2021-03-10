@@ -47,7 +47,7 @@ $ git config -global user.email [email]
 
 __作用：__ 设置系统用户级别邮箱
 
-### 查看config文件内的签名以及邮箱
+### 查看config文件的签名及邮箱
 
 ``` bash
 $ cat .git/config
