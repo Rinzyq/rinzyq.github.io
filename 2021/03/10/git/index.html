@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这是一篇自学记录git命令行工具的常用命令总结，可能会有一些错误。 本地库初始化1$ git init  作用： 初始化本地库 设置签名设置项目级别签名1$ git config user.name [name]  作用： 设置项目级别签名 设置项目级别邮箱1$ git config user.email [email]  作用： 设置项目级别邮箱 设置系统用户级别签名1$ git config">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git常用命令">
+<meta property="og:url" content="http://example.com/2021/03/10/git/index.html">
+<meta property="og:site_name" content="Rin">
+<meta property="og:description" content="这是一篇自学记录git命令行工具的常用命令总结，可能会有一些错误。 本地库初始化1$ git init  作用： 初始化本地库 设置签名设置项目级别签名1$ git config user.name [name]  作用： 设置项目级别签名 设置项目级别邮箱1$ git config user.email [email]  作用： 设置项目级别邮箱 设置系统用户级别签名1$ git config">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-10T20:25:38.000Z">
+<meta property="article:modified_time" content="2021-03-10T14:16:40.711Z">
+<meta property="article:author" content="Rin">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>git常用命令</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/03/10/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/03/10/git/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/03/10/git/&text=git常用命令"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/03/10/git/&title=git常用命令"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/03/10/git/&is_video=false&description=git常用命令"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=git常用命令&body=Check out this article: http://example.com/2021/03/10/git/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/03/10/git/&title=git常用命令"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/03/10/git/&title=git常用命令"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/03/10/git/&title=git常用命令"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/03/10/git/&title=git常用命令"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/03/10/git/&name=git常用命令&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/03/10/git/&t=git常用命令"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">本地库初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%AD%BE%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text">设置签名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%A1%B9%E7%9B%AE%E7%BA%A7%E5%88%AB%E7%AD%BE%E5%90%8D"><span class="toc-number">2.1.</span> <span class="toc-text">设置项目级别签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%A1%B9%E7%9B%AE%E7%BA%A7%E5%88%AB%E9%82%AE%E7%AE%B1"><span class="toc-number">2.2.</span> <span class="toc-text">设置项目级别邮箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%BA%A7%E5%88%AB%E7%AD%BE%E5%90%8D"><span class="toc-number">2.3.</span> <span class="toc-text">设置系统用户级别签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%BA%A7%E5%88%AB%E9%82%AE%E7%AE%B1"><span class="toc-number">2.4.</span> <span class="toc-text">设置系统用户级别邮箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bconfig%E6%96%87%E4%BB%B6%E5%86%85%E7%9A%84%E7%AD%BE%E5%90%8D%E4%BB%A5%E5%8F%8A%E9%82%AE%E7%AE%B1"><span class="toc-number">2.5.</span> <span class="toc-text">查看config文件内的签名以及邮箱</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">本地库的一些操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E5%BA%93%E7%8A%B6%E6%80%81"><span class="toc-number">3.1.</span> <span class="toc-text">查看本地库状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%82%E5%AD%98%E5%8C%BA%E7%9A%84%E6%B7%BB%E5%8A%A0%E6%93%8D%E4%BD%9C"><span class="toc-number">3.2.</span> <span class="toc-text">暂存区的添加操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%82%E5%AD%98%E5%8C%BA%E7%9A%84%E6%92%A4%E5%9B%9E%E6%93%8D%E4%BD%9C"><span class="toc-number">3.3.</span> <span class="toc-text">暂存区的撤回操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%BA%93%E7%9A%84%E6%8F%90%E4%BA%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">3.4.</span> <span class="toc-text">本地库的提交操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E7%9A%84%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">4.</span> <span class="toc-text">git的版本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E7%9A%84%E5%89%8D%E8%BF%9B%E5%90%8E%E9%80%80"><span class="toc-number">5.</span> <span class="toc-text">版本的前进后退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E6%96%87%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">比较文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">7.</span> <span class="toc-text">分支操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E8%BF%9C%E7%A8%8B%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C"><span class="toc-number">8.</span> <span class="toc-text">与远程库的一些操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E5%9C%B0%E5%9D%80"><span class="toc-number">8.1.</span> <span class="toc-text">赋值地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#push%E6%93%8D%E4%BD%9C"><span class="toc-number">8.2.</span> <span class="toc-text">push操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clone%E6%93%8D%E4%BD%9C"><span class="toc-number">8.3.</span> <span class="toc-text">clone操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fetch%E6%93%8D%E4%BD%9C"><span class="toc-number">8.4.</span> <span class="toc-text">fetch操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pull%E6%93%8D%E4%BD%9C"><span class="toc-number">8.5.</span> <span class="toc-text">pull操作</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        git常用命令
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Rin</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-03-10T20:25:38.000Z" itemprop="datePublished">2021-03-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>这是一篇自学记录git命令行工具的常用命令总结，可能会有一些错误。</p>
+<h2 id="本地库初始化"><a href="#本地库初始化" class="headerlink" title="本地库初始化"></a>本地库初始化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 初始化本地库</p>
+<h2 id="设置签名"><a href="#设置签名" class="headerlink" title="设置签名"></a>设置签名</h2><h3 id="设置项目级别签名"><a href="#设置项目级别签名" class="headerlink" title="设置项目级别签名"></a>设置项目级别签名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name [name]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 设置项目级别签名</p>
+<h3 id="设置项目级别邮箱"><a href="#设置项目级别邮箱" class="headerlink" title="设置项目级别邮箱"></a>设置项目级别邮箱</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.email [email]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 设置项目级别邮箱</p>
+<h3 id="设置系统用户级别签名"><a href="#设置系统用户级别签名" class="headerlink" title="设置系统用户级别签名"></a>设置系统用户级别签名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config -global user.name [name]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 设置系统用户级别签名</p>
+<h3 id="设置系统用户级别邮箱"><a href="#设置系统用户级别邮箱" class="headerlink" title="设置系统用户级别邮箱"></a>设置系统用户级别邮箱</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config -global user.email [email]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 设置系统用户级别邮箱</p>
+<h3 id="查看config文件内的签名以及邮箱"><a href="#查看config文件内的签名以及邮箱" class="headerlink" title="查看config文件内的签名以及邮箱"></a>查看config文件内的签名以及邮箱</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat .git/config</span><br></pre></td></tr></table></figure>
+
+<h2 id="本地库的一些操作"><a href="#本地库的一些操作" class="headerlink" title="本地库的一些操作"></a>本地库的一些操作</h2><h3 id="查看本地库状态"><a href="#查看本地库状态" class="headerlink" title="查看本地库状态"></a>查看本地库状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 查看本地库的当前状态</p>
+<h3 id="暂存区的添加操作"><a href="#暂存区的添加操作" class="headerlink" title="暂存区的添加操作"></a>暂存区的添加操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add [file]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 将文件添加至暂存区</p>
+<h3 id="暂存区的撤回操作"><a href="#暂存区的撤回操作" class="headerlink" title="暂存区的撤回操作"></a>暂存区的撤回操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached [file]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 将暂存区的文件撤回</p>
+<h3 id="本地库的提交操作"><a href="#本地库的提交操作" class="headerlink" title="本地库的提交操作"></a>本地库的提交操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit [file] </span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 将文件提交到本地库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;message&quot;</span> [file] </span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 将文件提交到本地库,并且在双引号内直接编辑message</p>
+<h2 id="git的版本信息"><a href="#git的版本信息" class="headerlink" title="git的版本信息"></a>git的版本信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 查看历史版本信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --oneline</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 以一行显示历史版本信息，只显示当前版本到过去的版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 简略显示历史版本信息，显示HEAD指针从当前版本移动到目标版本所需要的步数，并且显示所有版本</p>
+<h2 id="版本的前进后退"><a href="#版本的前进后退" class="headerlink" title="版本的前进后退"></a>版本的前进后退</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard [局部索引值] </span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 跳转到索引值对应的版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 跳转到上一版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD~[n]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 跳转到第N步的版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--hard  //在本地库移动HEAD指针，重置暂存区和工作区</span><br><span class="line">--mixed //在本地库移动HEAD指针，重置暂存区</span><br><span class="line">--soft  //仅在本地库移动HEAD指针</span><br></pre></td></tr></table></figure>
+
+<h2 id="比较文件"><a href="#比较文件" class="headerlink" title="比较文件"></a>比较文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff [file]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 比较文件修改前后差异，是与暂存区进行比较</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff HEAD [file]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 比较文件修改前后差异，是与本地库的文件进行比较</p>
+<h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -v</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 查看现有分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [分支名称]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 创建一个新的分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout [分支名称]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 切换分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge [分支名称]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 将输入的分支名称合并到当前分支</p>
+<h2 id="与远程库的一些操作"><a href="#与远程库的一些操作" class="headerlink" title="与远程库的一些操作"></a>与远程库的一些操作</h2><h3 id="赋值地址"><a href="#赋值地址" class="headerlink" title="赋值地址"></a>赋值地址</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add [自定义名称] [地址]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 将远程地址赋值到自定义名称</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v </span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 显示所有定义的远程地址</p>
+<h3 id="push操作"><a href="#push操作" class="headerlink" title="push操作"></a>push操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push [地址] [分支名称]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 将分支push到远程库</p>
+<h3 id="clone操作"><a href="#clone操作" class="headerlink" title="clone操作"></a>clone操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> [地址]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 将该地址下的远程库克隆到当前项目</p>
+<h3 id="fetch操作"><a href="#fetch操作" class="headerlink" title="fetch操作"></a>fetch操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch [地址] [分支名称]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 抓取远程地址上的远程库</p>
+<h3 id="pull操作"><a href="#pull操作" class="headerlink" title="pull操作"></a>pull操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull [地址] [分支名称]</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用：</strong> 直接拉去远程低智商的远程库覆盖本地库</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">本地库初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%AD%BE%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text">设置签名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%A1%B9%E7%9B%AE%E7%BA%A7%E5%88%AB%E7%AD%BE%E5%90%8D"><span class="toc-number">2.1.</span> <span class="toc-text">设置项目级别签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%A1%B9%E7%9B%AE%E7%BA%A7%E5%88%AB%E9%82%AE%E7%AE%B1"><span class="toc-number">2.2.</span> <span class="toc-text">设置项目级别邮箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%BA%A7%E5%88%AB%E7%AD%BE%E5%90%8D"><span class="toc-number">2.3.</span> <span class="toc-text">设置系统用户级别签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%BA%A7%E5%88%AB%E9%82%AE%E7%AE%B1"><span class="toc-number">2.4.</span> <span class="toc-text">设置系统用户级别邮箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bconfig%E6%96%87%E4%BB%B6%E5%86%85%E7%9A%84%E7%AD%BE%E5%90%8D%E4%BB%A5%E5%8F%8A%E9%82%AE%E7%AE%B1"><span class="toc-number">2.5.</span> <span class="toc-text">查看config文件内的签名以及邮箱</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">本地库的一些操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E5%BA%93%E7%8A%B6%E6%80%81"><span class="toc-number">3.1.</span> <span class="toc-text">查看本地库状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%82%E5%AD%98%E5%8C%BA%E7%9A%84%E6%B7%BB%E5%8A%A0%E6%93%8D%E4%BD%9C"><span class="toc-number">3.2.</span> <span class="toc-text">暂存区的添加操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%82%E5%AD%98%E5%8C%BA%E7%9A%84%E6%92%A4%E5%9B%9E%E6%93%8D%E4%BD%9C"><span class="toc-number">3.3.</span> <span class="toc-text">暂存区的撤回操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%BA%93%E7%9A%84%E6%8F%90%E4%BA%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">3.4.</span> <span class="toc-text">本地库的提交操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E7%9A%84%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">4.</span> <span class="toc-text">git的版本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E7%9A%84%E5%89%8D%E8%BF%9B%E5%90%8E%E9%80%80"><span class="toc-number">5.</span> <span class="toc-text">版本的前进后退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E6%96%87%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">比较文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">7.</span> <span class="toc-text">分支操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E8%BF%9C%E7%A8%8B%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C"><span class="toc-number">8.</span> <span class="toc-text">与远程库的一些操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E5%9C%B0%E5%9D%80"><span class="toc-number">8.1.</span> <span class="toc-text">赋值地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#push%E6%93%8D%E4%BD%9C"><span class="toc-number">8.2.</span> <span class="toc-text">push操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clone%E6%93%8D%E4%BD%9C"><span class="toc-number">8.3.</span> <span class="toc-text">clone操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fetch%E6%93%8D%E4%BD%9C"><span class="toc-number">8.4.</span> <span class="toc-text">fetch操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pull%E6%93%8D%E4%BD%9C"><span class="toc-number">8.5.</span> <span class="toc-text">pull操作</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/03/10/git/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/03/10/git/&text=git常用命令"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/03/10/git/&title=git常用命令"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/03/10/git/&is_video=false&description=git常用命令"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=git常用命令&body=Check out this article: http://example.com/2021/03/10/git/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/03/10/git/&title=git常用命令"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/03/10/git/&title=git常用命令"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/03/10/git/&title=git常用命令"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/03/10/git/&title=git常用命令"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/03/10/git/&name=git常用命令&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/03/10/git/&t=git常用命令"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    Rin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
