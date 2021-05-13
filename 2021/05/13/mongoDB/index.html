@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="MongoDB 命令 一些常用命令合集  增删改查 建立 mongoDB 连接  1$ mongo   展示本机上的所有数据库  1$ show dbs   使用某数据库  1$ use &lt;&#x2F;*数据库名*&#x2F;&gt;   新建数据库（只有插入一条数据才能新建数据库）  12$ use &lt;&#x2F;*数据库名*&#x2F;&gt;$ db.&lt;&#x2F;*集合名*&#x2F;&gt;.insert(&amp;#123;&#x2F;*数据*">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongoDB">
+<meta property="og:url" content="http://example.com/2021/05/13/mongoDB/index.html">
+<meta property="og:site_name" content="Rin">
+<meta property="og:description" content="MongoDB 命令 一些常用命令合集  增删改查 建立 mongoDB 连接  1$ mongo   展示本机上的所有数据库  1$ show dbs   使用某数据库  1$ use &lt;&#x2F;*数据库名*&#x2F;&gt;   新建数据库（只有插入一条数据才能新建数据库）  12$ use &lt;&#x2F;*数据库名*&#x2F;&gt;$ db.&lt;&#x2F;*集合名*&#x2F;&gt;.insert(&amp;#123;&#x2F;*数据*">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-13T09:33:36.000Z">
+<meta property="article:modified_time" content="2021-05-13T01:34:49.113Z">
+<meta property="article:author" content="Rin">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>mongoDB</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Rinzyq/supermall">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/05/13/vue-detail/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/05/13/mongoDB/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/05/13/mongoDB/&text=mongoDB"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/05/13/mongoDB/&title=mongoDB"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/05/13/mongoDB/&is_video=false&description=mongoDB"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=mongoDB&body=Check out this article: http://example.com/2021/05/13/mongoDB/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/05/13/mongoDB/&title=mongoDB"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/05/13/mongoDB/&title=mongoDB"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/05/13/mongoDB/&title=mongoDB"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/05/13/mongoDB/&title=mongoDB"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/05/13/mongoDB/&name=mongoDB&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/05/13/mongoDB/&t=mongoDB"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MongoDB-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">MongoDB 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">增删改查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E7%AE%A1%E9%81%93"><span class="toc-number">1.3.</span> <span class="toc-text">聚合管道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E4%BB%A5%E5%8F%8A%E8%BF%98%E5%8E%9F"><span class="toc-number">1.4.</span> <span class="toc-text">备份以及还原</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        mongoDB
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Rin</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-05-13T09:33:36.000Z" itemprop="datePublished">2021-05-13</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="MongoDB-命令"><a href="#MongoDB-命令" class="headerlink" title="MongoDB 命令"></a>MongoDB 命令</h1><blockquote>
+<p>一些常用命令合集</p>
+</blockquote>
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><ol>
+<li>建立 mongoDB 连接</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mongo</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>展示本机上的所有数据库</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ show dbs</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用某数据库</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ use &lt;/*数据库名*/&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>新建数据库（<strong>只有插入一条数据才能新建数据库</strong>）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ use &lt;/*数据库名*/&gt;</span><br><span class="line">$ db.&lt;/*集合名*/&gt;.insert(&#123;/*数据*/&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>展示该数据库内的集合</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ show collections</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>删除数据库</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.dropDatabase()</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>删除数据库内的集合</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.drop()</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>查看集合里面的数据<blockquote>
+<p>括号里的参数可以指定查找哪一个数据,可以传正则表达式</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.find(&#123;/*查找关键字*/&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>清除屏幕</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cls</span><br></pre></td></tr></table></figure>
+
+<p>10.大于，小于，大于等于，小于等于（条件）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">大于：&#123;$gt:...&#125;</span><br><span class="line">小于：&#123;$lt:...&#125;</span><br><span class="line">大于等于：&#123;$gte:...&#125;</span><br><span class="line">小于等于：&#123;$lte:...&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li>修改数据<blockquote>
+<p>$set表示只替换部分数据，没有$set 表示替换所有数据</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.update(&#123;/*数据*/&#125;,&#123;$set:...&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li>删除数据</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.remove(&#123;/*数据*/&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><blockquote>
+<p>索引能够使查询数据库变得更快</p>
+</blockquote>
+<ol>
+<li>创建索引</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.ensureIndex(&#123;&quot;/*数据*/&quot;:1&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>获取某集合的索引</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.getIndexes()</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>删除索引</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.dropIndex(&#123;&quot;/*数据*/&quot;:1&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>唯一索引</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.dropIndex(&#123;&quot;/*数据*/&quot;:1&#125;,&#123;&quot;unique&quot;:true&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="聚合管道"><a href="#聚合管道" class="headerlink" title="聚合管道"></a>聚合管道</h2><ol>
+<li>查询指定的字段</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.aggregate.([</span><br><span class="line">    &#123;</span><br><span class="line">        $project:&#123;/*数据：1*/&#125;</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>查询符合条件的数据</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.aggregate.([</span><br><span class="line">    &#123;</span><br><span class="line">        $project:&#123;/*数据：1(数据不需要引号)*/&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $match:&#123;/*&quot;数据名称&quot;:&#123;$gte:100&#125;*/&#125;</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>将集合中的文档分组</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.aggregate.([</span><br><span class="line">    &#123;</span><br><span class="line">        $group:&#123;_id:&quot;/*数据名称*/&quot;,total:&#123;/*$sum:&quot;$price&quot;*/&#125;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<p>4.表关联</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ db.&lt;/*集合名*/&gt;.aggregate.([</span><br><span class="line">    &#123;</span><br><span class="line">        $lookup:</span><br><span class="line">        &#123;</span><br><span class="line">            from:&quot;/*另一张表*/&quot;,</span><br><span class="line">            localField:&quot;/*关联字段*/&quot;,</span><br><span class="line">            foreignField:&quot;/*另一张表的关联字段*/&quot;,</span><br><span class="line">            as:&quot;/*关联的数据的key*/&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<h2 id="备份以及还原"><a href="#备份以及还原" class="headerlink" title="备份以及还原"></a>备份以及还原</h2><ol>
+<li>备份</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mongodump -h /*host*/ -d /*name*/ -o /*directory*/</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>还原</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$mongorestore -h /*host*/ -d /*name*/ /*路径*/</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Rinzyq/supermall">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MongoDB-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">MongoDB 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">增删改查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E7%AE%A1%E9%81%93"><span class="toc-number">1.3.</span> <span class="toc-text">聚合管道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E4%BB%A5%E5%8F%8A%E8%BF%98%E5%8E%9F"><span class="toc-number">1.4.</span> <span class="toc-text">备份以及还原</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/05/13/mongoDB/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/05/13/mongoDB/&text=mongoDB"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/05/13/mongoDB/&title=mongoDB"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/05/13/mongoDB/&is_video=false&description=mongoDB"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=mongoDB&body=Check out this article: http://example.com/2021/05/13/mongoDB/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/05/13/mongoDB/&title=mongoDB"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/05/13/mongoDB/&title=mongoDB"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/05/13/mongoDB/&title=mongoDB"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/05/13/mongoDB/&title=mongoDB"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/05/13/mongoDB/&name=mongoDB&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/05/13/mongoDB/&t=mongoDB"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    Rin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Rinzyq/supermall">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
